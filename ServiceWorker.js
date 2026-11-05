@@ -1,10 +1,10 @@
 // El nombre cambia con cada build, porque los ficheros llevan un hash: así el navegador detecta la versión nueva.
-const cacheName = "estratega-0.1.0-4c094569fd939a6a741d4c3b5abb6d5b.wasm.unityweb";
+const cacheName = "estratega-0.1.0-8cd0c7d4bbb6f093c125859d63f2f000.wasm.unityweb";
 const buildFiles = [
-  "Build/6b4a13954f3875c8f10a7f19ad21855c.loader.js",
-  "Build/67582b5366df4165fb78212f4ce7dab7.framework.js.unityweb",
-  "Build/a5d8854d63ae9f468f3b52afa8edd288.data.unityweb",
-  "Build/4c094569fd939a6a741d4c3b5abb6d5b.wasm.unityweb",
+  "Build/db5f7f9531f3e3c4cdb79da658454716.loader.js",
+  "Build/be7c1a33e6bad5505e804df8cb5da0f9.framework.js.unityweb",
+  "Build/b391fc287edf4d51fb0b171117c8c827.data.unityweb",
+  "Build/8cd0c7d4bbb6f093c125859d63f2f000.wasm.unityweb",
   "TemplateData/style.css",
 ];
 

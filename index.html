@@ -8,8 +8,8 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Estratega">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="theme-color" content="#0d5433">
-    <link rel="apple-touch-icon" href="TemplateData/icons/icon-192.png">
+    <meta name="theme-color" content="#0a0b0d">
+    <link rel="apple-touch-icon" href="TemplateData/icons/icon-180.png">
     <link rel="icon" href="TemplateData/icons/icon-192.png">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="stylesheet" href="TemplateData/style.css">
@@ -17,9 +17,10 @@
   <body>
     <canvas id="game" tabindex="-1"></canvas>
     <div id="loading">
+      <img id="loading-logo" src="TemplateData/logo.png" alt="">
       <div id="loading-title">El Estratega</div>
       <div id="loading-track"><div id="loading-bar"></div></div>
-      <div id="loading-text">Cargando…</div>
+      <div id="loading-text">Barajando…</div>
     </div>
     <script>
       // URL del servidor de esta publicación. Se puede cambiar aquí sin recompilar.
@@ -43,9 +44,9 @@
       var buildUrl = "Build";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/adcada9a360a218b3d6699c456161609.data.unityweb",
-        frameworkUrl: buildUrl + "/70dee16053c5b63a839d559a41c1bd6a.framework.js.unityweb",
-        codeUrl: buildUrl + "/e137ef7af4d9307d984a60b36fcaccbe.wasm.unityweb",
+        dataUrl: buildUrl + "/a5d8854d63ae9f468f3b52afa8edd288.data.unityweb",
+        frameworkUrl: buildUrl + "/67582b5366df4165fb78212f4ce7dab7.framework.js.unityweb",
+        codeUrl: buildUrl + "/4c094569fd939a6a741d4c3b5abb6d5b.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Vixtorbir",
         productName: "El Estratega",
@@ -59,11 +60,11 @@
       };
 
       var script = document.createElement("script");
-      script.src = buildUrl + "/708311a26b25d1f307e2375c426627e5.loader.js";
+      script.src = buildUrl + "/6b4a13954f3875c8f10a7f19ad21855c.loader.js";
       script.onload = function () {
         createUnityInstance(document.getElementById("game"), config, function (progress) {
           bar.style.width = (100 * progress) + "%";
-          text.textContent = "Cargando… " + Math.round(100 * progress) + " %";
+          text.textContent = "Barajando… " + Math.round(100 * progress) + " %";
         }).then(function () {
           loading.style.display = "none";
         }).catch(showError);

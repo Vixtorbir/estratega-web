@@ -3,7 +3,7 @@ const cacheName = "estratega-0.1.0-8cd0c7d4bbb6f093c125859d63f2f000.wasm.unitywe
 const buildFiles = [
   "Build/db5f7f9531f3e3c4cdb79da658454716.loader.js",
   "Build/be7c1a33e6bad5505e804df8cb5da0f9.framework.js.unityweb",
-  "Build/b391fc287edf4d51fb0b171117c8c827.data.unityweb",
+  "Build/f40c58daeab357ad3da569850ede43ee.data.unityweb",
   "Build/8cd0c7d4bbb6f093c125859d63f2f000.wasm.unityweb",
   "TemplateData/style.css",
 ];

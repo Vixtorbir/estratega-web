@@ -32,6 +32,21 @@
         });
       }
 
+      // Al abrirla, la página nueva ya llega sola. Esto cubre la app que se deja abierta durante días: al volver a ella,
+      // si hay otra versión, se recarga. No se pierde nada: la partida vive en el servidor y se reconecta.
+      var runningBuild = "db5f7f9531f3e3c4cdb79da658454716.loader.js";
+      var lastVersionCheck = Date.now();
+      document.addEventListener("visibilitychange", function () {
+        if (document.visibilityState !== "visible" || Date.now() - lastVersionCheck < 60000) return;
+        lastVersionCheck = Date.now();
+        fetch("./?version=" + lastVersionCheck, { cache: "no-store" })
+          .then(function (response) { return response.ok ? response.text() : ""; })
+          .then(function (html) {
+            if (html.indexOf("createUnityInstance") !== -1 && html.indexOf(runningBuild) === -1) location.reload();
+          })
+          .catch(function () {});
+      });
+
       var loading = document.getElementById("loading");
       var bar = document.getElementById("loading-bar");
       var text = document.getElementById("loading-text");
@@ -44,7 +59,7 @@
       var buildUrl = "Build";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/b391fc287edf4d51fb0b171117c8c827.data.unityweb",
+        dataUrl: buildUrl + "/f40c58daeab357ad3da569850ede43ee.data.unityweb",
         frameworkUrl: buildUrl + "/be7c1a33e6bad5505e804df8cb5da0f9.framework.js.unityweb",
         codeUrl: buildUrl + "/8cd0c7d4bbb6f093c125859d63f2f000.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",

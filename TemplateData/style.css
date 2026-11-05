@@ -1,0 +1,8 @@
+html, body { margin: 0; padding: 0; height: 100%; background: #0d5433; overflow: hidden; }
+body { position: fixed; width: 100%; height: 100dvh; touch-action: none; -webkit-user-select: none; user-select: none; }
+#game { display: block; width: 100%; height: 100%; background: #0d5433; outline: none; }
+#loading { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fff; font-family: -apple-system, system-ui, sans-serif; }
+#loading-title { font-size: 32px; font-weight: 600; margin-bottom: 24px; }
+#loading-track { width: 220px; height: 8px; border-radius: 4px; background: rgba(0, 0, 0, 0.35); overflow: hidden; }
+#loading-bar { width: 0; height: 100%; background: #fff; }
+#loading-text { margin-top: 14px; padding: 0 24px; font-size: 15px; text-align: center; }

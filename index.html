@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title>El Estratega</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Estratega">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="theme-color" content="#0d5433">
+    <link rel="apple-touch-icon" href="TemplateData/icons/icon-192.png">
+    <link rel="icon" href="TemplateData/icons/icon-192.png">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="stylesheet" href="TemplateData/style.css">
+  </head>
+  <body>
+    <canvas id="game" tabindex="-1"></canvas>
+    <div id="loading">
+      <div id="loading-title">El Estratega</div>
+      <div id="loading-track"><div id="loading-bar"></div></div>
+      <div id="loading-text">Cargando…</div>
+    </div>
+    <script>
+      // URL del servidor de esta publicación. Se puede cambiar aquí sin recompilar.
+      window.EstrategaServerUrl = "wss://estratega-server.onrender.com/ws";
+
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker.register("ServiceWorker.js");
+        });
+      }
+
+      var loading = document.getElementById("loading");
+      var bar = document.getElementById("loading-bar");
+      var text = document.getElementById("loading-text");
+
+      function showError(message) {
+        text.textContent = "No se ha podido cargar. Cierra y vuelve a abrir. (" + message + ")";
+        loading.style.display = "flex";
+      }
+
+      var buildUrl = "Build";
+      var config = {
+        arguments: [],
+        dataUrl: buildUrl + "/adcada9a360a218b3d6699c456161609.data.unityweb",
+        frameworkUrl: buildUrl + "/70dee16053c5b63a839d559a41c1bd6a.framework.js.unityweb",
+        codeUrl: buildUrl + "/e137ef7af4d9307d984a60b36fcaccbe.wasm.unityweb",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "Vixtorbir",
+        productName: "El Estratega",
+        productVersion: "0.1.0",
+        // Sin pasar de 2x: a la resolución nativa del iPhone gastaría más memoria y batería sin verse mejor.
+        devicePixelRatio: Math.min(window.devicePixelRatio || 1, 2),
+        showBanner: function (message, type) {
+          if (type === "error") showError(message);
+          else console.warn(message);
+        }
+      };
+
+      var script = document.createElement("script");
+      script.src = buildUrl + "/708311a26b25d1f307e2375c426627e5.loader.js";
+      script.onload = function () {
+        createUnityInstance(document.getElementById("game"), config, function (progress) {
+          bar.style.width = (100 * progress) + "%";
+          text.textContent = "Cargando… " + Math.round(100 * progress) + " %";
+        }).then(function () {
+          loading.style.display = "none";
+        }).catch(showError);
+      };
+      script.onerror = function () { showError("sin conexión"); };
+      document.body.appendChild(script);
+    </script>
+  </body>
+</html>
